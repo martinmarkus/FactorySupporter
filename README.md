@@ -1,14 +1,14 @@
-# StrategySupporter
-Module for supporting the implementation of Strategy Pattern in .NET.
-The StrategySupporter essentially uses System.Reflection and metadata annotating by Attributes to interpret and instantiate the implementations of your Strategy Pattern.
+# FactorySupporter
+Module for supporting the implementation of Factory Pattern in .NET.
+The FactorySupporter essentially uses System.Reflection and metadata annotating by Attributes to interpret and instantiate the implementations of your Factory Pattern.
 
 ## The usage of StrategySupporter
 
 ### Step 1
-Define your custom ``Attribute`` derived from ``StrategyIdentifier``.
+Define your custom ``Attribute`` derived from ``IdentifierAttribute``.
 For example:
 ````
-    public class CarAttribute : StrategyIdentifier
+    public class CarAttribute : IdentifierAttribute
     {
         private string _carType;
 
@@ -25,7 +25,7 @@ For example:
 ````
 
 ### Step 2
-Implement your own Strategy Pattern and tag the implementations' classes with your derived ``StrategyIdentifier`` ``Attribure``.
+Implement your own Factory Pattern and tag the implementations' classes with your derived ``IdentifierAttribute``.
 For example:
 ````
     public interface ICar
@@ -66,10 +66,10 @@ For example:
 
         private ICar _car;
 
-        public CarContext(Assembly executingAssembly, StrategyIdentifierFunc<CarAttribute> strategyIdentifierFunc)
+        public CarContext(Assembly executingAssembly, IdentifierFunc<CarAttribute> identifierFunc)
         {
             _implementationFactory = new ImplementationFactory(executingAssembly);
-            _car = _implementationFactory.Create<ICar, CarAttribute>(strategyIdentifierFunc);
+            _car = _implementationFactory.Create<ICar, CarAttribute>(identifierFunc);
         }
 
         public void Beep()
@@ -85,7 +85,7 @@ Instantiate the CarContext, and pass the required parameters. For example:
 ````
     public static void Main(string[] args)
     {
-        // The Assembly, where your Strategy is implemented.
+        // The Assembly, where your implenetations are.
         Assembly executingAssembly = Assembly.GetExecutingAssembly();
 
         // define the CarContext
@@ -95,8 +95,8 @@ Instantiate the CarContext, and pass the required parameters. For example:
         carContext.Beep();
     }
     
-    // Define the function as a StrategyIdentifierFunc, which implements your base logic
-    // for determining the required  Strategy implementation.
+    // Define the function as a IdentifierFunc, which implements your base logic
+    // for determining the required implementation.
     public static bool MiniVanIdentifierFunc(CarAttribute carAttribute)
     {
         // By the passed Attribute you can define the condition for searching the implementation. 
