@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace FactorySupporter.Facades
 {
-    internal class TypeIdentifier : ITypeIdentifier
+    public class TypeIdentifier : ITypeIdentifier
     {
         public Type GetInstantiationType<TAttribute>(IdentifierFunc<TAttribute> strategySupportFunc, Assembly assembly)
             where TAttribute : IdentifierAttribute
