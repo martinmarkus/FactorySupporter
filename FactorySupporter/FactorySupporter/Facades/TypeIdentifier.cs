@@ -8,8 +8,8 @@ namespace FactorySupporter.Facades
 {
     internal class TypeIdentifier : ITypeIdentifier
     {
-        public Type GetInstantiationType<TAttribute>(StrategyIdentifierFunc<TAttribute> strategySupportFunc, Assembly assembly)
-            where TAttribute : StrategyIdentifier
+        public Type GetInstantiationType<TAttribute>(IdentifierFunc<TAttribute> strategySupportFunc, Assembly assembly)
+            where TAttribute : IdentifierAttribute
         {
             if (strategySupportFunc == null) throw new MissingStrategyIdentifierFuncException(new NullReferenceException());
 
@@ -67,8 +67,8 @@ namespace FactorySupporter.Facades
             return attributes;
         }
 
-        private bool IsMeetingConditions<TAttribute>(Type type, StrategyIdentifierFunc<TAttribute> strategySupportFunc, TAttribute[] attributes)
-            where TAttribute : StrategyIdentifier
+        private bool IsMeetingConditions<TAttribute>(Type type, IdentifierFunc<TAttribute> strategySupportFunc, TAttribute[] attributes)
+            where TAttribute : IdentifierAttribute
         {
             bool condition = false;
 

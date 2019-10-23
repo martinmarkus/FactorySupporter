@@ -1,4 +1,4 @@
 ﻿namespace FactorySupporter.Delegates
 {
-    public delegate bool StrategyIdentifierFunc<TAttribute>(TAttribute attribute);
+    public delegate bool IdentifierFunc<TAttribute>(TAttribute attribute);
 }

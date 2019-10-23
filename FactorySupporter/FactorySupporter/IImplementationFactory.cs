@@ -20,9 +20,9 @@ namespace FactorySupporter
         /// <exception cref="Exceptions.ConcreteExceptions.MissingStrategyIdentifierFuncException"></exception>
         /// <exception cref="Exceptions.ConcreteExceptions.NotFoundImplementationException"></exception>
         /// <returns></returns>
-        TResult Create<TResult, TAttribute>(StrategyIdentifierFunc<TAttribute> strategySupportFunc) 
+        TResult Create<TResult, TAttribute>(IdentifierFunc<TAttribute> strategySupportFunc) 
             where TResult : class 
-            where TAttribute : StrategyIdentifier;
+            where TAttribute : IdentifierAttribute;
 
         /// <summary>
         /// Instantiates an implementation determined by the StrategySupportFunc delegate.
@@ -36,8 +36,8 @@ namespace FactorySupporter
         /// <exception cref="Exceptions.ConcreteExceptions.MissingStrategyIdentifierFuncException"></exception>
         /// <exception cref="Exceptions.ConcreteExceptions.NotFoundImplementationException"></exception>
         /// <returns></returns>
-        TResult Create<TResult, TAttribute>(Assembly executingAssembly, StrategyIdentifierFunc<TAttribute> strategySupportFunc)
+        TResult Create<TResult, TAttribute>(Assembly executingAssembly, IdentifierFunc<TAttribute> strategySupportFunc)
             where TResult : class
-            where TAttribute : StrategyIdentifier;
+            where TAttribute : IdentifierAttribute;
     }
 }

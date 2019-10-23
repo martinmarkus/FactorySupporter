@@ -7,7 +7,7 @@ namespace FactorySupporter.Facades
 {
     internal interface ITypeIdentifier
     {
-        Type GetInstantiationType<TAttribute>(StrategyIdentifierFunc<TAttribute> strategySupportFunc, Assembly assembly)
-            where TAttribute : StrategyIdentifier;
+        Type GetInstantiationType<TAttribute>(IdentifierFunc<TAttribute> strategySupportFunc, Assembly assembly)
+            where TAttribute : IdentifierAttribute;
     }
 }

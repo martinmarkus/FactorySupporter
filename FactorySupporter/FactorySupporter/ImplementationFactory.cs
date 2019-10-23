@@ -24,9 +24,9 @@ namespace FactorySupporter
         }
 
         #region Interface methods
-        public TResult Create<TResult, TAttribute>(Assembly executingAssembly, StrategyIdentifierFunc<TAttribute> strategySupportFunc)
+        public TResult Create<TResult, TAttribute>(Assembly executingAssembly, IdentifierFunc<TAttribute> strategySupportFunc)
             where TResult : class
-            where TAttribute : StrategyIdentifier
+            where TAttribute : IdentifierAttribute
         {
             TResult result = default(TResult);
             try
@@ -43,9 +43,9 @@ namespace FactorySupporter
             return result;
         }
 
-        public TResult Create<TResult, TAttribute>(StrategyIdentifierFunc<TAttribute> strategySupportFunc)
+        public TResult Create<TResult, TAttribute>(IdentifierFunc<TAttribute> strategySupportFunc)
             where TResult : class
-            where TAttribute : StrategyIdentifier
+            where TAttribute : IdentifierAttribute
         {
             TResult result = default(TResult);
             try
@@ -63,9 +63,9 @@ namespace FactorySupporter
         }
         #endregion
 
-        private TResult ExecuteCreating<TResult, TAttribute>(Assembly executingAssembly, StrategyIdentifierFunc<TAttribute> strategySupportFunc)
+        private TResult ExecuteCreating<TResult, TAttribute>(Assembly executingAssembly, IdentifierFunc<TAttribute> strategySupportFunc)
             where TResult : class
-            where TAttribute : StrategyIdentifier
+            where TAttribute : IdentifierAttribute
         {
             if (executingAssembly == null) throw new MissingExecutingAssemblyException(new NullReferenceException());
 
