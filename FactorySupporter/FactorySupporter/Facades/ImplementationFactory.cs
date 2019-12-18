@@ -2,12 +2,11 @@
 using FactorySupporter.Delegates;
 using FactorySupporter.Exceptions;
 using FactorySupporter.Exceptions.ConcreteExceptions;
-using FactorySupporter.Facades;
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace FactorySupporter
+namespace FactorySupporter.Facades
 {
     public class ImplementationFactory : IImplementationFactory
     {

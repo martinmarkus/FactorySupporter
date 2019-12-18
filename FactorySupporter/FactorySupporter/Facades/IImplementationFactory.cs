@@ -2,7 +2,7 @@
 using FactorySupporter.Delegates;
 using System.Reflection;
 
-namespace FactorySupporter
+namespace FactorySupporter.Facades
 {
     public interface IImplementationFactory
     {
